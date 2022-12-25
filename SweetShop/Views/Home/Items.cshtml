@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SweetShop.Models.Item>
+
+@{
+    ViewBag.Title = "Shops";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<!-- blog -->
+<section class="blog py-5" id="blog">
+    <div class="container py-xl-5 py-lg-3">
+        <h3 class="title-w3ls text-center text-bl mb-5">Available Sweet Items</h3>
+        <div class="row">
+            <!-- blog grid -->
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 px-md-2">
+                    <div class="card">
+                        <div class="card-header p-0 position-relative">
+                            <a href="/Home/Items/@item.ItemID">
+                                <img class="card-img-bottom" src="~/Content/AppData/@item.Image1" alt="Card image cap">
+                                <span class="fa fa-user post-icon"></span>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="let-spa mb-3">@item.Details</h6>
+                            <h5 class="blog-title card-title">
+                                <a href="/Home/Items/@item.ItemID">
+                                    @item.Name
+                                </a>
+                            </h5>
+
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- //blog grid -->
+
+        </div>
+    </div>
+</section>
+<!-- //blog -->

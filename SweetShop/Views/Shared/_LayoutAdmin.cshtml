@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Panel</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/Admin/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/Admin/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/Admin/dist/css/adminlte.min.css">
+    @RenderSection("Styles", required: false)
+
+</head>
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+           
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Navbar Search -->
+              
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                        <i class="fas fa-th-large"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="~/Content/Admin/index3.html" class="brand-link">
+                <img src="~/Content/Admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">Admin Panel</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+
+
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                        <li class="nav-item"><a class="nav-link" href="/Users/AdminHome"><i class="nav-icon far fa-arrow-alt-circle-right"></i><p>Home</p></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Adm_Shops/Index"><i class="nav-icon far fa-image"></i><p>Manage Shops</p></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Adm_Categories/Index"><i class="nav-icon far fa-image"></i><p>Manage Categories</p></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Adm_Items/Index"><i class="nav-icon far fa-image"></i><p>Manage Products</p></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Adm_Cat_Shop_Assignment/Index"><i class="nav-icon far fa-image"></i><p>Allocate Categories</p></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Adm_Item_Shop_Assignment/Index"><i class="nav-icon far fa-image"></i><p>Allocate Items</p></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Adm_Users/Index"><i class="nav-icon far fa-image"></i><p>Manage Users</p></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Adm_Feedbacks/Index"><i class="nav-icon far fa-image"></i><p>Manage Feedbacks</p></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Home/Logout"><i class="nav-icon far fa-image"></i><p>Logout</p></a></li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="card" style="margin:14px">
+
+                    <div class="card-body" style="padding:14px">
+                        @RenderBody()
+                    </div>
+
+                </div>
+                <!-- /.card -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+      
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Content/Admin/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Content/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Content/Admin/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Content/Admin/dist/js/demo.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

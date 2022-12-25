@@ -1,0 +1,123 @@
+﻿@model SweetShop.Models.Item
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MFGDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MFGDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EXPDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXPDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ItemID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
