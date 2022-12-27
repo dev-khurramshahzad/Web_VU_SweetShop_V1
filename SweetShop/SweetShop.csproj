@@ -2132,6 +2132,7 @@
     <Content Include="Content\User\images\te3.jpg" />
     <Content Include="Content\User\images\who.jpg" />
     <Content Include="Content\User\images\who2.jpg" />
+    <Content Include="Database\db_SweetShop.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2432,7 +2433,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Database\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
