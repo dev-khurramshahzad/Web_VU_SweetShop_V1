@@ -11,10 +11,8 @@ namespace SweetShop.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Shop()
         {
-            Cat_Shop_Assignment = new HashSet<Cat_Shop_Assignment>();
             Feedbacks = new HashSet<Feedback>();
-            Item_Shop_Assignment = new HashSet<Item_Shop_Assignment>();
-            Orders = new HashSet<Order>();
+            Items = new HashSet<Item>();
             Users = new HashSet<User>();
         }
 
@@ -48,16 +46,10 @@ namespace SweetShop.Models
         public string Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cat_Shop_Assignment> Cat_Shop_Assignment { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedbacks { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item_Shop_Assignment> Item_Shop_Assignment { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }

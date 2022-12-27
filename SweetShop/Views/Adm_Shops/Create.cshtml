@@ -7,10 +7,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
-{
+<form action="/Adm_Shops/Create" method="post" enctype="multipart/form-data">
+
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Shop</h4>
         <hr />
@@ -58,7 +58,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="file" name="pic" required />
                 @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -85,8 +85,8 @@
             </div>
         </div>
     </div>
-}
+</form>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

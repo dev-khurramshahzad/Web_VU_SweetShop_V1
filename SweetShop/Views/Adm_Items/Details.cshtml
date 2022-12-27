@@ -20,6 +20,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Shop.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shop.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
@@ -64,15 +72,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image2)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image2)
+            <img src="~/Content/AppData/@Model.Image1" width="80" />
         </dd>
 
         <dt>

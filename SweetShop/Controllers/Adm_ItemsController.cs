@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,7 +18,7 @@ namespace SweetShop.Controllers
         // GET: Adm_Items
         public ActionResult Index()
         {
-            var items = db.Items.Include(i => i.Category);
+            var items = db.Items.Include(i => i.Category).Include(i => i.Shop);
             return View(items.ToList());
         }
 
@@ -40,6 +41,7 @@ namespace SweetShop.Controllers
         public ActionResult Create()
         {
             ViewBag.CatFID = new SelectList(db.Categories, "CatID", "Name");
+            ViewBag.ShopFID = new SelectList(db.Shops, "ShopID", "Name");
             return View();
         }
 
@@ -48,8 +50,26 @@ namespace SweetShop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemID,Name,CatFID,SalePrice,CostPrice,MFGDate,EXPDate,Image1,Image2,Type,Quantity,Rating,Details,Status")] Item item)
+        public ActionResult Create(Item item, HttpPostedFileBase pic)
         {
+            string img = Path.GetFileName(pic.FileName);
+            string Ext = Path.GetExtension(img);
+            Ext = Ext.ToLower();
+            if (Ext == ".jpg" || Ext == ".png" || Ext == ".bmp" || Ext == ".jpeg" || Ext == ".tiff" || Ext == ".tif")
+            {
+                item.Image1 = img;
+                string StorePath = Path.Combine(Server.MapPath("~/Content/AppData"), img);
+                pic.SaveAs(StorePath);
+            }
+            else
+            {
+                TempData["State"] = "error";
+                TempData["Message"] = "Please select a Valid Picure.";
+                return View(item);
+            }
+
+
+
             if (ModelState.IsValid)
             {
                 db.Items.Add(item);
@@ -58,6 +78,7 @@ namespace SweetShop.Controllers
             }
 
             ViewBag.CatFID = new SelectList(db.Categories, "CatID", "Name", item.CatFID);
+            ViewBag.ShopFID = new SelectList(db.Shops, "ShopID", "Name", item.ShopFID);
             return View(item);
         }
 
@@ -74,6 +95,7 @@ namespace SweetShop.Controllers
                 return HttpNotFound();
             }
             ViewBag.CatFID = new SelectList(db.Categories, "CatID", "Name", item.CatFID);
+            ViewBag.ShopFID = new SelectList(db.Shops, "ShopID", "Name", item.ShopFID);
             return View(item);
         }
 
@@ -82,8 +104,32 @@ namespace SweetShop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemID,Name,CatFID,SalePrice,CostPrice,MFGDate,EXPDate,Image1,Image2,Type,Quantity,Rating,Details,Status")] Item item)
+        public ActionResult Edit(Item item, HttpPostedFileBase pic)
         {
+            if (pic != null)
+            {
+                string img = Path.GetFileName(pic.FileName);
+                string Ext = Path.GetExtension(img);
+                Ext = Ext.ToLower();
+                if (Ext == ".jpg" || Ext == ".png" || Ext == ".bmp" || Ext == ".jpeg" || Ext == ".tiff" || Ext == ".tif")
+                {
+                    item.Image1 = img;
+                    string StorePath = Path.Combine(Server.MapPath("~/Content/AppData"), img);
+                    pic.SaveAs(StorePath);
+                }
+                else
+                {
+                    TempData["State"] = "error";
+                    TempData["Message"] = "Please select a Valid Picure.";
+                    ViewBag.CatFID = new SelectList(db.Categories, "CatID", "Name", item.CatFID);
+                    ViewBag.ShopFID = new SelectList(db.Shops, "ShopID", "Name", item.ShopFID);
+                    return View(item);
+                }
+
+            }
+
+
+
             if (ModelState.IsValid)
             {
                 db.Entry(item).State = EntityState.Modified;
@@ -91,6 +137,7 @@ namespace SweetShop.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CatFID = new SelectList(db.Categories, "CatID", "Name", item.CatFID);
+            ViewBag.ShopFID = new SelectList(db.Shops, "ShopID", "Name", item.ShopFID);
             return View(item);
         }
 

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SweetShop.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "PLSReport";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    double? TotalPrchase = 0;
+    double? TotalSale = 0;
+    double? TotalProfit = 0;
+}
+
+<div class="row">
+    <div style="padding:24px" class="col-md-12">
+        <div class="table-responsive">
+            <h2 class="hk-sec-title">Profit/Loss Report</h2>
+            <br />
+
+            <table id="datable_1" class="table table-bordered  table-striped ">
+                <thead>
+                    <tr>
+                        <td>
+                            Product Name
+                        </td>
+                        <td>
+                            Customer
+                        </td>
+                        <td>
+                            Purchase Price
+                        </td>
+                        <td>
+                            Sale Price
+                        </td>
+                        <td>
+                            Profit
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        TotalPrchase += item.Item.CostPrice; TotalSale += item.Item.SalePrice; TotalProfit += (item.Item.SalePrice - item.Item.CostPrice);
+                        <tr>
+                            <td>
+                                @item.Item.Name
+                            </td>
+                            <td>
+                                @item.Order.User.Name
+                            </td>
+
+                            <td>
+                                @item.Item.CostPrice
+                            </td>
+                            <td>
+                                @item.Item.SalePrice
+                            </td>
+                            <td>
+                                @(item.Item.SalePrice - item.Item.CostPrice)
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <hr />
+            <span class="badge badge-danger lg" style="font-size:22px">
+                Total Purchases : Rs. @TotalPrchase
+            </span> |
+            <span class="badge badge-primary lg" style="font-size:22px">
+                Total Sales : Rs. @TotalSale
+            </span> |
+            <span class="badge badge-green lg" style="font-size:22px">
+                Total Profit : Rs. @TotalProfit
+            </span>
+        </div>
+    </div>
+</div>
+       

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -46,8 +47,23 @@ namespace SweetShop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ShopID,Name,BranchCode,Phone,Email,Address,Image,Details,Status")] Shop shop)
+        public ActionResult Create( Shop shop, HttpPostedFileBase pic)
         {
+            string img = Path.GetFileName(pic.FileName);
+            string Ext = Path.GetExtension(img);
+            Ext = Ext.ToLower();
+            if (Ext == ".jpg" || Ext == ".png" || Ext == ".bmp" || Ext == ".jpeg" || Ext == ".tiff" || Ext == ".tif")
+            {
+                shop.Image = img;
+                string StorePath = Path.Combine(Server.MapPath("~/Content/AppData"), img);
+                pic.SaveAs(StorePath);
+            }
+            else
+            {
+                TempData["State"] = "error";
+                TempData["Message"] = "Please select a Valid Picure.";
+                return View(shop);
+            }
             if (ModelState.IsValid)
             {
                 db.Shops.Add(shop);
@@ -78,8 +94,30 @@ namespace SweetShop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ShopID,Name,BranchCode,Phone,Email,Address,Image,Details,Status")] Shop shop)
+        public ActionResult Edit( Shop shop, HttpPostedFileBase pic)
         {
+            if (pic!=null)
+            {
+
+                string img = Path.GetFileName(pic.FileName);
+                string Ext = Path.GetExtension(img);
+                Ext = Ext.ToLower();
+                if (Ext == ".jpg" || Ext == ".png" || Ext == ".bmp" || Ext == ".jpeg" || Ext == ".tiff" || Ext == ".tif")
+                {
+                    shop.Image = img;
+                    string StorePath = Path.Combine(Server.MapPath("~/Content/AppData"), img);
+                    pic.SaveAs(StorePath);
+                }
+                else
+                {
+                    TempData["State"] = "error";
+                    TempData["Message"] = "Please select a Valid Picure.";
+                    return View(shop);
+                }
+            }
+
+
+
             if (ModelState.IsValid)
             {
                 db.Entry(shop).State = EntityState.Modified;

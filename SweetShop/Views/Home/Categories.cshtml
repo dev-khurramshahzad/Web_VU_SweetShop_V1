@@ -9,7 +9,7 @@
 <!-- blog -->
 <section class="blog py-5" id="blog">
     <div class="container py-xl-5 py-lg-3">
-        <h3 class="title-w3ls text-center text-bl mb-5">Available Categories</h3>
+        <h3 class="title-w3ls text-center text-bl mb-5">Our Categories</h3>
         <div class="row">
             <!-- blog grid -->
             @foreach (var item in Model)
@@ -18,7 +18,7 @@
                     <div class="card">
                         <div class="card-header p-0 position-relative">
                             <a href="/Home/Items/@item.CatID">
-                                <img class="card-img-bottom" src="~/Content/AppData/@item.Image" alt="Card image cap">
+                                <img style="height:200px" class="card-img-bottom" src="~/Content/AppData/@item.Image" alt="Card image cap">
                                 <span class="fa fa-user post-icon"></span>
                             </a>
                         </div>

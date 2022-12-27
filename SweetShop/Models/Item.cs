@@ -11,7 +11,6 @@ namespace SweetShop.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Item()
         {
-            Item_Shop_Assignment = new HashSet<Item_Shop_Assignment>();
             OrderDetails = new HashSet<OrderDetail>();
         }
 
@@ -22,6 +21,8 @@ namespace SweetShop.Models
         public string Name { get; set; }
 
         public int? CatFID { get; set; }
+
+        public int? ShopFID { get; set; }
 
         public double SalePrice { get; set; }
 
@@ -52,8 +53,7 @@ namespace SweetShop.Models
 
         public virtual Category Category { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item_Shop_Assignment> Item_Shop_Assignment { get; set; }
+        public virtual Shop Shop { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

@@ -130,10 +130,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Adm_CategoriesController.cs" />
-    <Compile Include="Controllers\Adm_Cat_Shop_AssignmentController.cs" />
-    <Compile Include="Controllers\Adm_FeedbacksController.cs" />
     <Compile Include="Controllers\Adm_ItemsController.cs" />
-    <Compile Include="Controllers\Adm_Item_Shop_AssignmentController.cs" />
+    <Compile Include="Controllers\Adm_ReportsController.cs" />
     <Compile Include="Controllers\Adm_ShopsController.cs" />
     <Compile Include="Controllers\Adm_UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -141,17 +139,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Cat_Shop_Assignment.cs" />
     <Compile Include="Models\dbModel.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\Item_Shop_Assignment.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Shop.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\OrderSearchModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin\build\config\postcss.config.js" />
@@ -2090,14 +2088,15 @@
     <Content Include="Content\Admin\plugins\uplot\uPlot.iife.js" />
     <Content Include="Content\Admin\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Content\Admin\plugins\uplot\uPlot.min.css" />
-    <Content Include="Content\AppData\18028041873_2b34351304_b.jpg" />
-    <Content Include="Content\AppData\blog1.jpg" />
-    <Content Include="Content\AppData\blog2.jpg" />
-    <Content Include="Content\AppData\blog3.jpg" />
-    <Content Include="Content\AppData\g1.jpg" />
-    <Content Include="Content\AppData\g2.jpg" />
-    <Content Include="Content\AppData\g3.jpg" />
-    <Content Include="Content\AppData\Screenshot 2022-12-25 225945.png" />
+    <Content Include="Content\AppData\1604695335894.jpeg" />
+    <Content Include="Content\AppData\pressure-cooker-milk-burfi.jpg" />
+    <Content Include="Content\AppData\rasgulla_5819.jpg" />
+    <Content Include="Content\AppData\Screenshot 2022-12-27 171053.png" />
+    <Content Include="Content\AppData\Screenshot_20221227_051013.png" />
+    <Content Include="Content\AppData\Screenshot_20221227_051106.png" />
+    <Content Include="Content\AppData\Screenshot_20221227_051124.png" />
+    <Content Include="Content\AppData\Screenshot_20221227_051140.png" />
+    <Content Include="Content\AppData\taste-of-india506.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -2397,47 +2396,43 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Users\AdminHome.cshtml" />
-    <Content Include="Views\Adm_Categories\Create.cshtml" />
-    <Content Include="Views\Adm_Categories\Delete.cshtml" />
-    <Content Include="Views\Adm_Categories\Details.cshtml" />
-    <Content Include="Views\Adm_Categories\Edit.cshtml" />
-    <Content Include="Views\Adm_Categories\Index.cshtml" />
+    <Content Include="Views\Home\Shops.cshtml" />
+    <Content Include="Views\Home\Categories.cshtml" />
+    <Content Include="Views\Home\Items.cshtml" />
     <Content Include="Views\Adm_Items\Create.cshtml" />
     <Content Include="Views\Adm_Items\Delete.cshtml" />
     <Content Include="Views\Adm_Items\Details.cshtml" />
     <Content Include="Views\Adm_Items\Edit.cshtml" />
     <Content Include="Views\Adm_Items\Index.cshtml" />
-    <Content Include="Views\Adm_Users\Create.cshtml" />
-    <Content Include="Views\Adm_Users\Delete.cshtml" />
-    <Content Include="Views\Adm_Users\Details.cshtml" />
-    <Content Include="Views\Adm_Users\Edit.cshtml" />
-    <Content Include="Views\Adm_Users\Index.cshtml" />
-    <Content Include="Views\Adm_Cat_Shop_Assignment\Create.cshtml" />
-    <Content Include="Views\Adm_Cat_Shop_Assignment\Delete.cshtml" />
-    <Content Include="Views\Adm_Cat_Shop_Assignment\Details.cshtml" />
-    <Content Include="Views\Adm_Cat_Shop_Assignment\Edit.cshtml" />
-    <Content Include="Views\Adm_Cat_Shop_Assignment\Index.cshtml" />
-    <Content Include="Views\Adm_Item_Shop_Assignment\Create.cshtml" />
-    <Content Include="Views\Adm_Item_Shop_Assignment\Delete.cshtml" />
-    <Content Include="Views\Adm_Item_Shop_Assignment\Details.cshtml" />
-    <Content Include="Views\Adm_Item_Shop_Assignment\Edit.cshtml" />
-    <Content Include="Views\Adm_Item_Shop_Assignment\Index.cshtml" />
+    <Content Include="Views\Adm_Categories\Create.cshtml" />
+    <Content Include="Views\Adm_Categories\Delete.cshtml" />
+    <Content Include="Views\Adm_Categories\Details.cshtml" />
+    <Content Include="Views\Adm_Categories\Edit.cshtml" />
+    <Content Include="Views\Adm_Categories\Index.cshtml" />
     <Content Include="Views\Adm_Shops\Create.cshtml" />
     <Content Include="Views\Adm_Shops\Delete.cshtml" />
     <Content Include="Views\Adm_Shops\Details.cshtml" />
     <Content Include="Views\Adm_Shops\Edit.cshtml" />
     <Content Include="Views\Adm_Shops\Index.cshtml" />
-    <Content Include="Views\Adm_Feedbacks\Create.cshtml" />
-    <Content Include="Views\Adm_Feedbacks\Delete.cshtml" />
-    <Content Include="Views\Adm_Feedbacks\Details.cshtml" />
-    <Content Include="Views\Adm_Feedbacks\Edit.cshtml" />
-    <Content Include="Views\Adm_Feedbacks\Index.cshtml" />
-    <Content Include="Views\Home\Shops.cshtml" />
-    <Content Include="Views\Home\Categories.cshtml" />
-    <Content Include="Views\Home\Items.cshtml" />
+    <Content Include="Views\Adm_Users\Create.cshtml" />
+    <Content Include="Views\Adm_Users\Delete.cshtml" />
+    <Content Include="Views\Adm_Users\Details.cshtml" />
+    <Content Include="Views\Adm_Users\Edit.cshtml" />
+    <Content Include="Views\Adm_Users\Index.cshtml" />
+    <Content Include="Views\Home\ShoppingCart.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\OrderConfirmed.cshtml" />
+    <Content Include="Views\Adm_Reports\Delete.cshtml" />
+    <Content Include="Views\Adm_Reports\Details.cshtml" />
+    <Content Include="Views\Adm_Reports\Index.cshtml" />
+    <Content Include="Views\Adm_Reports\OrderDetails.cshtml" />
+    <Content Include="Views\Adm_Reports\PLSReport.cshtml" />
+    <Content Include="Views\Adm_Reports\Stock.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Database\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

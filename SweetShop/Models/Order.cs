@@ -16,8 +16,6 @@ namespace SweetShop.Models
 
         public int OrderID { get; set; }
 
-        public int? ShopFID { get; set; }
-
         public int? UserFID { get; set; }
 
         [Column(TypeName = "date")]
@@ -33,8 +31,6 @@ namespace SweetShop.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-
-        public virtual Shop Shop { get; set; }
 
         public virtual User User { get; set; }
     }

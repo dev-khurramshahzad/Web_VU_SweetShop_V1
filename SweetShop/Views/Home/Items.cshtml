@@ -6,37 +6,52 @@
 }
 
 <hr />
-<!-- blog -->
-<section class="blog py-5" id="blog">
+
+<section class="teams py-5" id="chefs">
     <div class="container py-xl-5 py-lg-3">
-        <h3 class="title-w3ls text-center text-bl mb-5">Available Sweet Items</h3>
-        <div class="row">
-            <!-- blog grid -->
+        <h3 class="title-w3ls text-center text-wh mb-5">Our Best Products</h3>
+        <div class="row text-center">
             @foreach (var item in Model)
             {
-                <div class="col-lg-4 col-md-6 px-md-2">
-                    <div class="card">
-                        <div class="card-header p-0 position-relative">
-                            <a href="/Home/Items/@item.ItemID">
-                                <img class="card-img-bottom" src="~/Content/AppData/@item.Image1" alt="Card image cap">
-                                <span class="fa fa-user post-icon"></span>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="let-spa mb-3">@item.Details</h6>
-                            <h5 class="blog-title card-title">
-                                <a href="/Home/Items/@item.ItemID">
-                                    @item.Name
-                                </a>
-                            </h5>
-
+                <div class="col-lg-4 mt-lg-0 mt-5">
+                    <div class="team-gd">
+                        <img style="height:200px"  src="~/Content/AppData/@item.Image1" class="img-fluid" alt="user-image">
+                        <div class="team-info mt-4">
+                            <h3 class="mb-2"><span class="sub-tittle-team">@item.Category.Name</span>@item.Name</h3>
+                            <p>
+                                <table class="" border="1" style="width:100%">
+                                    <tr>
+                                        <td>Shop</td>
+                                        <td>@item.Shop.Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td>EXPDate</td>
+                                        <td>@item.EXPDate.ToShortDateString()</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MFGDate</td>
+                                        <td>@item.MFGDate.ToShortDateString()</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rate</td>
+                                        <td>@item.SalePrice Per KG</td>
+                                    </tr>
+                                   
+                                </table>
+                            </p>
+                            <ul class="social_section_1info list-unstyled pt-2 mt-4">
+                                <li class="d-inline google">
+                                    <a href="/Home/AddToCart/@item.ItemID"><span class="fa fa-cart-plus mr-1"></span>Add to Cart</a>
+                                </li>
+                                <li class="d-inline linkedin">
+                                    <a href="/Home/ItemDetails/@item.ItemID"><span class="fa fa-search mr-1"></span>Details</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             }
-            <!-- //blog grid -->
-
         </div>
     </div>
 </section>
-<!-- //blog -->
+

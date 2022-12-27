@@ -12,10 +12,8 @@ namespace SweetShop.Models
         {
         }
 
-        public virtual DbSet<Cat_Shop_Assignment> Cat_Shop_Assignment { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
-        public virtual DbSet<Item_Shop_Assignment> Item_Shop_Assignment { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
@@ -24,11 +22,6 @@ namespace SweetShop.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>()
-                .HasMany(e => e.Cat_Shop_Assignment)
-                .WithOptional(e => e.Category)
-                .HasForeignKey(e => e.CatFID);
-
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.Items)
                 .WithOptional(e => e.Category)
@@ -50,17 +43,12 @@ namespace SweetShop.Models
                 .IsFixedLength();
 
             modelBuilder.Entity<Shop>()
-                .HasMany(e => e.Cat_Shop_Assignment)
-                .WithOptional(e => e.Shop)
-                .HasForeignKey(e => e.ShopFID);
-
-            modelBuilder.Entity<Shop>()
                 .HasMany(e => e.Feedbacks)
                 .WithOptional(e => e.Shop)
                 .HasForeignKey(e => e.ShopFID);
 
             modelBuilder.Entity<Shop>()
-                .HasMany(e => e.Orders)
+                .HasMany(e => e.Items)
                 .WithOptional(e => e.Shop)
                 .HasForeignKey(e => e.ShopFID);
 

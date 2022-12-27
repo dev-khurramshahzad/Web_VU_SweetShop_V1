@@ -12,21 +12,33 @@
     <link rel="stylesheet" href="~/Content/Admin/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="~/Content/Admin/dist/css/adminlte.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @RenderSection("Styles", required: false)
 
 </head>
 <body class="hold-transition sidebar-mini">
+    @if (TempData["Message"] != null && (string)TempData["Message"] != "No")
+    {
+        <script type="text/javascript">
+                window.onload = function () {
+                    Swal.fire(
+                        '@TempData["State"]',
+                        '@TempData["Message"]',
+                        '@TempData["State"]')
+                };
+        </script>
+    }
+
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
-           
-
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Navbar Search -->
-              
+
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -56,15 +68,14 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
                         <li class="nav-item"><a class="nav-link" href="/Users/AdminHome"><i class="nav-icon far fa-arrow-alt-circle-right"></i><p>Home</p></a></li>
                         <li class="nav-item"><a class="nav-link" href="/Adm_Shops/Index"><i class="nav-icon far fa-image"></i><p>Manage Shops</p></a></li>
                         <li class="nav-item"><a class="nav-link" href="/Adm_Categories/Index"><i class="nav-icon far fa-image"></i><p>Manage Categories</p></a></li>
                         <li class="nav-item"><a class="nav-link" href="/Adm_Items/Index"><i class="nav-icon far fa-image"></i><p>Manage Products</p></a></li>
-                        <li class="nav-item"><a class="nav-link" href="/Adm_Cat_Shop_Assignment/Index"><i class="nav-icon far fa-image"></i><p>Allocate Categories</p></a></li>
-                        <li class="nav-item"><a class="nav-link" href="/Adm_Item_Shop_Assignment/Index"><i class="nav-icon far fa-image"></i><p>Allocate Items</p></a></li>
                         <li class="nav-item"><a class="nav-link" href="/Adm_Users/Index"><i class="nav-icon far fa-image"></i><p>Manage Users</p></a></li>
-                        <li class="nav-item"><a class="nav-link" href="/Adm_Feedbacks/Index"><i class="nav-icon far fa-image"></i><p>Manage Feedbacks</p></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Adm_Reports/Index"><i class="nav-icon far fa-image"></i><p>Order Report</p></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Adm_Reports/PLSReport"><i class="nav-icon far fa-image"></i><p>P/L Report</p></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Adm_Reports/Stock"><i class="nav-icon far fa-image"></i><p>Stock Report</p></a></li>
                         <li class="nav-item"><a class="nav-link" href="/Home/Logout"><i class="nav-icon far fa-image"></i><p>Logout</p></a></li>
                     </ul>
                 </nav>
@@ -93,8 +104,6 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-      
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->

@@ -909,13 +909,7 @@ h3.title-w3ls {
     background: #fff;
 }
 
-.team-gd img {
-    -webkit-border-radius: 50%;
-    -o-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-}
+
 
 .team-info h3 {
     font-size: 22px;

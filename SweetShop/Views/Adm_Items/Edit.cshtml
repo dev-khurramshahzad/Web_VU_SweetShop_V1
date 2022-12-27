@@ -7,10 +7,10 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
-{
+<form action="/Adm_Items/Edit" method="post" enctype="multipart/form-data">
+
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Item</h4>
         <hr />
@@ -30,6 +30,14 @@
             <div class="col-md-10">
                 @Html.DropDownList("CatFID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CatFID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShopFID, "ShopFID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ShopFID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ShopFID, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -68,18 +76,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Image1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Image1, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Image1, "", new { @class = "text-danger" })
+                <img src="~/Content/AppData/@Model.Image1" width="80" />
+                <input type="hidden" name="Image" value="@Model.Image1" />
+                <input type="file" name="pic" />                @Html.ValidationMessageFor(model => model.Image1, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Image2, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Image2, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Image2, "", new { @class = "text-danger" })
-            </div>
-        </div>
+     
 
         <div class="form-group">
             @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -127,8 +130,8 @@
             </div>
         </div>
     </div>
-}
+</form>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

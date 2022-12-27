@@ -11,7 +11,6 @@ namespace SweetShop.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Category()
         {
-            Cat_Shop_Assignment = new HashSet<Cat_Shop_Assignment>();
             Items = new HashSet<Item>();
         }
 
@@ -29,9 +28,6 @@ namespace SweetShop.Models
 
         [StringLength(50)]
         public string Status { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cat_Shop_Assignment> Cat_Shop_Assignment { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item> Items { get; set; }
