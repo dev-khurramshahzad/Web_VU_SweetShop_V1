@@ -153,7 +153,7 @@ namespace SweetShop.Controllers
                 TempData["State"] = "warning";
                 TempData["Message"] = "You must be logged in to checkout.";
 
-                return Redirect("/Home/Login?return_url=" + this.Request.RawUrl);
+                return Redirect("/Home/Login?return_url=/Home/ShoppingCart");
             }
             //ORDER SAVING ================================================================
 
@@ -256,21 +256,25 @@ namespace SweetShop.Controllers
                 }
                 if (type == "Admin")
                 {
-                    return Redirect("/Home/Admin");
+                    return Redirect("/Adm_Reports/PLSReport");
                 }
-                return Redirect("/Home/Index");
+                return Redirect("/Home/");
             }
         }
         public ActionResult Register()
         {
+            ViewBag.ddlShopsData = db.Shops.ToList();
+
             return View();
         }
-        public ActionResult CreateData(string name, string phone, string address, string email, string password, string cpassword, string type)
+        public ActionResult CreateData(string name, string phone, string address, string email, string password, string cpassword, string type,int? ddlShops)
         {
             if (password != cpassword)
             {
                 return Content("<script>alert('Passwords do not match...');window.history.back();</script>");
             }
+
+            
 
             var check = db.Users.FirstOrDefault(x => x.Email == email && x.Type == type);
             if (check != null)
@@ -292,6 +296,14 @@ namespace SweetShop.Controllers
                 Image = "N/A"
 
             };
+
+             
+            if (type == "Manager")
+            {
+                int ShopID = (int)ddlShops;
+                c.ShopFID= ShopID;
+            }
+            
 
             db.Users.Add(c);
             db.SaveChanges();

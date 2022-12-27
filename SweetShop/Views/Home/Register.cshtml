@@ -5,10 +5,12 @@
 }
 
 <style>
-    input {
+    input, select {
         margin: 8px;
     }
 </style>
+
+
 
 
 <br />
@@ -29,12 +31,30 @@
                     <input type="password" placeholder="Re-Enter Password" name="cpassword" required class="form-control" />
                     <input type="text" placeholder="Phone" name="phone" required class="form-control" />
                     <input type="text" placeholder="Address" name="address" required class="form-control" />
+                    <select style="display:none" id="ddlShops" name="ddlShops" class="form-control">
+                        @foreach (var item in (List<SweetShop.Models.Shop>)ViewBag.ddlShopsData)
+                        {
+                            <option value="@item.ShopID">@item.Name</option>
+                        }
+                    </select>
+
+                    <script>
+                        function changeToManager() {
+                            document.getElementById('ddlShops').style.display = 'block'
+                        }
+
+                        function changeToCustomer() {
+                            document.getElementById('ddlShops').style.display = 'none'
+                        }
+                    </script>
+
+                  
 
                     <div>
-                        <input type="radio" value="Customer" checked name="type"  />
+                        <input onclick="changeToCustomer()" type="radio" value="Customer" checked  name="type" />
                         <label class="form-check-label">Customer</label>
 
-                        <input type="radio" value="Manager" name="type"  />
+                        <input onclick="changeToManager()" type="radio" value="Manager" name="type"  />
                         <label class="form-check-label">Manager</label>
 
 
