@@ -5,11 +5,10 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
-
+<h2>User Details</h2>
+<hr />
 <div>
-    <h4>User</h4>
-    <hr />
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Shop.Name)
@@ -67,13 +66,7 @@
             @Html.DisplayFor(model => model.Type)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Details)

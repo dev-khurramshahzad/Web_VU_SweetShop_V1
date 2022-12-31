@@ -1,19 +1,21 @@
 ﻿@model SweetShop.Models.Item
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
 }
 
-<h2>Create Item</h2>
+<h2>Edit Item</h2>
 <hr />
-<form action="/Adm_Items/Create" method="post" enctype="multipart/form-data">
+<form action="/Mgr_Items/Edit" method="post" enctype="multipart/form-data">
 
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-       
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ItemID)
+
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -30,13 +32,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ShopFID, "ShopFID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ShopFID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ShopFID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.SalePrice, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -73,8 +69,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Image1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" name="pic" required />
-                @Html.ValidationMessageFor(model => model.Image1, "", new { @class = "text-danger" })
+                <img src="~/Content/AppData/@Model.Image1" width="80" />
+                <input type="hidden" name="Image" value="@Model.Image1" />
+                <input type="file" name="pic" />                @Html.ValidationMessageFor(model => model.Image1, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -122,7 +119,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

@@ -18,10 +18,13 @@ namespace SweetShop.Models
 
         [Required]
         [StringLength(50)]
-        public string Name { get; set; }
+        [Display(Name = "Item")]
 
+        public string Name { get; set; }
+        [Display(Name = "Category")]
         public int? CatFID { get; set; }
 
+        [Display(Name = "Shop")]
         public int? ShopFID { get; set; }
 
         public double SalePrice { get; set; }

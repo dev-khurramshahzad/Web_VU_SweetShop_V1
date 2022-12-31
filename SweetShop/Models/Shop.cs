@@ -20,6 +20,8 @@ namespace SweetShop.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Shop")]
+
         public string Name { get; set; }
 
         [Required]

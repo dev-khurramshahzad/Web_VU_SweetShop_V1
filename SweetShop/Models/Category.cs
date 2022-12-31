@@ -18,6 +18,7 @@ namespace SweetShop.Models
         public int CatID { get; set; }
 
         [Required]
+        [Display(Name = "Category")]
         [StringLength(50)]
         public string Name { get; set; }
 

@@ -19,6 +19,8 @@ namespace SweetShop.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "User")]
+
         public string Name { get; set; }
 
         [Required]

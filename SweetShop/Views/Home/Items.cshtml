@@ -14,8 +14,10 @@
             @foreach (var item in Model)
             {
                 <div class="col-lg-4 mt-lg-0 mt-5">
+                    <br />
+                    <br />
                     <div class="team-gd">
-                        <img style="height:200px"  src="~/Content/AppData/@item.Image1" class="img-fluid" alt="user-image">
+                        <img style="height:200px" src="~/Content/AppData/@item.Image1" class="img-fluid" alt="user-image">
                         <div class="team-info mt-4">
                             <h3 class="mb-2"><span class="sub-tittle-team">@item.Category.Name</span>@item.Name</h3>
                             <p>
@@ -36,7 +38,7 @@
                                         <td>Rate</td>
                                         <td>@item.SalePrice Per KG</td>
                                     </tr>
-                                   
+
                                 </table>
                             </p>
                             <ul class="social_section_1info list-unstyled pt-2 mt-4">

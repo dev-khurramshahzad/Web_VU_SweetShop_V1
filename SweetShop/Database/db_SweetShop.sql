@@ -1,6 +1,6 @@
-Create Database [db_SweetShop]
+USE [db_SweetShop]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 12/27/2022 8:42:51 PM ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 12/31/2022 4:22:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[Categories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Feedbacks]    Script Date: 12/27/2022 8:42:51 PM ******/
+/****** Object:  Table [dbo].[Feedbacks]    Script Date: 12/31/2022 4:22:27 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -37,7 +37,7 @@ CREATE TABLE [dbo].[Feedbacks](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Items]    Script Date: 12/27/2022 8:42:51 PM ******/
+/****** Object:  Table [dbo].[Items]    Script Date: 12/31/2022 4:22:27 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -64,7 +64,7 @@ CREATE TABLE [dbo].[Items](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OrderDetails]    Script Date: 12/27/2022 8:42:51 PM ******/
+/****** Object:  Table [dbo].[OrderDetails]    Script Date: 12/31/2022 4:22:27 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -80,7 +80,7 @@ CREATE TABLE [dbo].[OrderDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 12/27/2022 8:42:51 PM ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 12/31/2022 4:22:27 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +98,7 @@ CREATE TABLE [dbo].[Orders](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Shops]    Script Date: 12/27/2022 8:42:51 PM ******/
+/****** Object:  Table [dbo].[Shops]    Script Date: 12/31/2022 4:22:27 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -119,7 +119,7 @@ CREATE TABLE [dbo].[Shops](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 12/27/2022 8:42:51 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 12/31/2022 4:22:27 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,11 +152,11 @@ SET IDENTITY_INSERT [dbo].[Categories] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Items] ON 
 GO
-INSERT [dbo].[Items] ([ItemID], [Name], [CatFID], [ShopFID], [SalePrice], [CostPrice], [MFGDate], [EXPDate], [Image1], [Image2], [Type], [Quantity], [Rating], [Details], [Status]) VALUES (3, N'Rasgullah ', 1, 2, 1100, 700, CAST(N'2022-10-08' AS Date), CAST(N'2022-08-10' AS Date), N'rasgulla_5819.jpg', NULL, NULL, -1, 5, N'Choclate Cake', N'Active')
+INSERT [dbo].[Items] ([ItemID], [Name], [CatFID], [ShopFID], [SalePrice], [CostPrice], [MFGDate], [EXPDate], [Image1], [Image2], [Type], [Quantity], [Rating], [Details], [Status]) VALUES (3, N'Rasgullah ', 1, 2, 1100, 700, CAST(N'2022-10-08' AS Date), CAST(N'2022-08-10' AS Date), N'rasgulla_5819.jpg', NULL, NULL, 10, 5, N'Choclate Cake', N'Active')
 GO
-INSERT [dbo].[Items] ([ItemID], [Name], [CatFID], [ShopFID], [SalePrice], [CostPrice], [MFGDate], [EXPDate], [Image1], [Image2], [Type], [Quantity], [Rating], [Details], [Status]) VALUES (1005, N'Barfi', 2, 4, 1100, 650, CAST(N'2012-12-12' AS Date), CAST(N'2012-12-12' AS Date), N'pressure-cooker-milk-burfi.jpg', NULL, NULL, -1, 5, N'Pineapple Cake', N'Active')
+INSERT [dbo].[Items] ([ItemID], [Name], [CatFID], [ShopFID], [SalePrice], [CostPrice], [MFGDate], [EXPDate], [Image1], [Image2], [Type], [Quantity], [Rating], [Details], [Status]) VALUES (1005, N'Barfi', 2, 4, 1100, 650, CAST(N'2012-12-12' AS Date), CAST(N'2012-12-12' AS Date), N'pressure-cooker-milk-burfi.jpg', NULL, NULL, 12, 5, N'Pineapple Cake', N'Active')
 GO
-INSERT [dbo].[Items] ([ItemID], [Name], [CatFID], [ShopFID], [SalePrice], [CostPrice], [MFGDate], [EXPDate], [Image1], [Image2], [Type], [Quantity], [Rating], [Details], [Status]) VALUES (1007, N'Gulab Jaman', 1, 2, 1300, 800, CAST(N'2012-12-12' AS Date), CAST(N'2012-12-12' AS Date), N'1604695335894.jpeg', NULL, NULL, 6, 5, N'Vanilla Cake', N'Active')
+INSERT [dbo].[Items] ([ItemID], [Name], [CatFID], [ShopFID], [SalePrice], [CostPrice], [MFGDate], [EXPDate], [Image1], [Image2], [Type], [Quantity], [Rating], [Details], [Status]) VALUES (1007, N'Gulab Jaman', 1, 2, 1300, 800, CAST(N'2012-12-12' AS Date), CAST(N'2012-12-12' AS Date), N'1604695335894.jpeg', NULL, NULL, 20, 5, N'Vanilla Cake', N'Active')
 GO
 SET IDENTITY_INSERT [dbo].[Items] OFF
 GO
@@ -170,15 +170,23 @@ INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderFID], [ItemFID], [Quantity])
 GO
 INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderFID], [ItemFID], [Quantity]) VALUES (4, 3, 3, 1)
 GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderFID], [ItemFID], [Quantity]) VALUES (5, NULL, 3, 3)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderFID], [ItemFID], [Quantity]) VALUES (6, NULL, 1005, 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderFID], [ItemFID], [Quantity]) VALUES (7, 5, NULL, 2)
+GO
 SET IDENTITY_INSERT [dbo].[OrderDetails] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Orders] ON 
 GO
-INSERT [dbo].[Orders] ([OrderID], [UserFID], [Date], [Time], [Details], [Status]) VALUES (1, 1001, CAST(N'2022-12-27' AS Date), CAST(N'16:04:17.5728687' AS Time), NULL, N'Delivered')
+INSERT [dbo].[Orders] ([OrderID], [UserFID], [Date], [Time], [Details], [Status]) VALUES (1, 1001, CAST(N'2022-12-27' AS Date), CAST(N'16:04:17.5728687' AS Time), NULL, N'Waiting')
 GO
-INSERT [dbo].[Orders] ([OrderID], [UserFID], [Date], [Time], [Details], [Status]) VALUES (2, 1001, CAST(N'2022-12-27' AS Date), CAST(N'18:15:13.3273869' AS Time), NULL, N'Pending')
+INSERT [dbo].[Orders] ([OrderID], [UserFID], [Date], [Time], [Details], [Status]) VALUES (2, 1001, CAST(N'2022-12-27' AS Date), CAST(N'18:15:13.3273869' AS Time), NULL, N'Delivered')
 GO
 INSERT [dbo].[Orders] ([OrderID], [UserFID], [Date], [Time], [Details], [Status]) VALUES (3, 1001, CAST(N'2022-12-27' AS Date), CAST(N'20:13:52.3802420' AS Time), NULL, N'Pending')
+GO
+INSERT [dbo].[Orders] ([OrderID], [UserFID], [Date], [Time], [Details], [Status]) VALUES (5, 1001, CAST(N'2022-12-31' AS Date), CAST(N'15:25:57.4626750' AS Time), NULL, N'Pending')
 GO
 SET IDENTITY_INSERT [dbo].[Orders] OFF
 GO
@@ -192,19 +200,11 @@ SET IDENTITY_INSERT [dbo].[Shops] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Users] ON 
 GO
-INSERT [dbo].[Users] ([UserID], [Name], [Email], [Password], [Phone], [Address], [Type], [Image], [Details], [Status], [ShopFID]) VALUES (1, N'Ali', N'Ali123@gmail.com', N'222', N'030189333', N'pakistan', N'Customer', N'chef.png', N'N/A', N'Approved', NULL)
+INSERT [dbo].[Users] ([UserID], [Name], [Email], [Password], [Phone], [Address], [Type], [Image], [Details], [Status], [ShopFID]) VALUES (1001, N'Customer', N'customer@customer.com', N'customer', N'030000000', N'Gujranwala Main City', N'Customer', NULL, N'NA', N'Active', NULL)
 GO
-INSERT [dbo].[Users] ([UserID], [Name], [Email], [Password], [Phone], [Address], [Type], [Image], [Details], [Status], [ShopFID]) VALUES (2, N'Sara', N'sara@gmail.com', N'111', N'1234566', N'pakistan', N'admin', N'n', N'N/A', N'Active', NULL)
+INSERT [dbo].[Users] ([UserID], [Name], [Email], [Password], [Phone], [Address], [Type], [Image], [Details], [Status], [ShopFID]) VALUES (1003, N'Admin', N'admin@admin.com', N'admin', N'NA', N'NA', N'Admin', N'NA', N'N/A', N'Active', NULL)
 GO
-INSERT [dbo].[Users] ([UserID], [Name], [Email], [Password], [Phone], [Address], [Type], [Image], [Details], [Status], [ShopFID]) VALUES (3, N'Ali', N'Ali@manager.com', N'333', N'030123456789', N'pakistan', N'Manager', N'n', N'N/A', N'Approved', NULL)
-GO
-INSERT [dbo].[Users] ([UserID], [Name], [Email], [Password], [Phone], [Address], [Type], [Image], [Details], [Status], [ShopFID]) VALUES (4, N'Sana', N'sanabsit18@gmail.com', N'ww', N'1234', N'8753234767', N'Admin', NULL, N'N/A', N'Active', NULL)
-GO
-INSERT [dbo].[Users] ([UserID], [Name], [Email], [Password], [Phone], [Address], [Type], [Image], [Details], [Status], [ShopFID]) VALUES (1001, N'Khurram Shahzad', N'developer.khurramshahzad@gmail.com', N'123', N'03484086662', N'Gujranwala', N'Customer', NULL, N'Active', NULL, NULL)
-GO
-INSERT [dbo].[Users] ([UserID], [Name], [Email], [Password], [Phone], [Address], [Type], [Image], [Details], [Status], [ShopFID]) VALUES (1002, N'Khurram Shahzad', N'developer.khurramshahzad@gmail.com', N'123', N'03484086662', N'Gujranwala', N'Manager', N'N/A', N'N/A', N'Active', NULL)
-GO
-INSERT [dbo].[Users] ([UserID], [Name], [Email], [Password], [Phone], [Address], [Type], [Image], [Details], [Status], [ShopFID]) VALUES (1003, N'Admin', N'admin@admin.com', N'admin', N'03484086662', N'Gujranwala', N'Admin', N'N/A', N'N/A', N'Active', NULL)
+INSERT [dbo].[Users] ([UserID], [Name], [Email], [Password], [Phone], [Address], [Type], [Image], [Details], [Status], [ShopFID]) VALUES (2004, N'Manager', N'manager@manager.com', N'manager', N'NA', N'NA', N'Manager', N'N/A', N'N/A', N'Active', 4)
 GO
 SET IDENTITY_INSERT [dbo].[Users] OFF
 GO

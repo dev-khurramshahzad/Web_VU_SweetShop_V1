@@ -11,15 +11,23 @@ using SweetShop.ViewModels;
 
 namespace SweetShop.Controllers
 {
-    public class Adm_ReportsController : Controller
+    public class Mgr_ReportsController : Controller
     {
-
-
         private dbModel db = new dbModel();
+        public Shop shop = null;
+
+       
+
 
         public ActionResult Stock()
         {
-            return View(db.Items.ToList());
+            if (Session["LoggedInManager"] != null)
+            {
+                User manager = (User)Session["LoggedInManager"];
+                shop = db.Shops.Find(manager.ShopFID);
+            }
+            return View(db.Items.Where(x=>x.ShopFID == shop.ShopID).ToList());
+
         }
 
 
@@ -33,7 +41,7 @@ namespace SweetShop.Controllers
             {
 
                 if (appSearch.Customer != null && appSearch.Customer != "")
-                   result = result.Where(x=>x.User.Name.Contains(appSearch.Customer));
+                    result = result.Where(x => x.User.Name.Contains(appSearch.Customer));
 
                 if (appSearch.Status != null && appSearch.Status != "--Select Order Status--")
                     result = result.Where(x => x.Status == appSearch.Status);
@@ -45,18 +53,30 @@ namespace SweetShop.Controllers
                     result = result.Where(x => x.Date <= appSearch.DateTo);
             }
 
-            ViewBag.Orders = result.ToList();
+            if (Session["LoggedInManager"] != null)
+            {
+                User manager = (User)Session["LoggedInManager"];
+                shop = db.Shops.Find(manager.ShopFID);
+            }
+
+            ViewBag.Orders = result.Where(x=>x.OrderDetails.All(y=>y.Item.ShopFID == shop.ShopID)).ToList();
             return View();
+        
         }
 
         public ActionResult PLSReport()
         {
+            if (Session["LoggedInManager"] != null)
+            {
+                User manager = (User)Session["LoggedInManager"];
+                shop = db.Shops.Find(manager.ShopFID);
+            }
 
-            var prods = db.OrderDetails;
+            var prods = db.OrderDetails.Where(x=>x.Item.ShopFID == shop.ShopID);
             return View(prods);
         }
 
-       
+
 
         public ActionResult OrderDetails(int id)
         {
@@ -80,7 +100,7 @@ namespace SweetShop.Controllers
             return View(order);
         }
 
-        
+
         // GET: Admin_Orders/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -90,7 +110,7 @@ namespace SweetShop.Controllers
             return RedirectToAction("Index");
         }
 
-       
+
 
         public ActionResult Pending(int id)
         {

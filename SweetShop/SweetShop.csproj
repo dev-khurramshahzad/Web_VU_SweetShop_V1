@@ -130,7 +130,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Adm_CategoriesController.cs" />
+    <Compile Include="Controllers\Mgr_ItemsController.cs" />
     <Compile Include="Controllers\Adm_ItemsController.cs" />
+    <Compile Include="Controllers\Mgr_ReportsController.cs" />
     <Compile Include="Controllers\Adm_ReportsController.cs" />
     <Compile Include="Controllers\Adm_ShopsController.cs" />
     <Compile Include="Controllers\Adm_UsersController.cs" />
@@ -2428,6 +2430,19 @@
     <Content Include="Views\Adm_Reports\OrderDetails.cshtml" />
     <Content Include="Views\Adm_Reports\PLSReport.cshtml" />
     <Content Include="Views\Adm_Reports\Stock.cshtml" />
+    <Content Include="Views\Shared\_LayoutManager.cshtml" />
+    <Content Include="Views\Mgr_Items\Create.cshtml" />
+    <Content Include="Views\Mgr_Items\Delete.cshtml" />
+    <Content Include="Views\Mgr_Items\Details.cshtml" />
+    <Content Include="Views\Mgr_Items\Edit.cshtml" />
+    <Content Include="Views\Mgr_Items\Index.cshtml" />
+    <Content Include="Views\Mgr_Reports\Delete.cshtml" />
+    <Content Include="Views\Mgr_Reports\Details.cshtml" />
+    <Content Include="Views\Mgr_Reports\Index.cshtml" />
+    <Content Include="Views\Mgr_Reports\OrderDetails.cshtml" />
+    <Content Include="Views\Mgr_Reports\PLSReport.cshtml" />
+    <Content Include="Views\Mgr_Reports\Stock.cshtml" />
+    <Content Include="Views\Home\ItemDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

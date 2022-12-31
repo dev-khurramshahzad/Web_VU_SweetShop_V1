@@ -22,7 +22,6 @@ namespace SweetShop.Controllers
         {
             return View(db.Categories.ToList());
         }
-
         public ActionResult Items(int? id)
         {
             var items = db.Items.ToList();
@@ -32,7 +31,11 @@ namespace SweetShop.Controllers
             }
             return View(items);
         }
-
+        public ActionResult ItemDetails(int? id)
+        {
+            var item = db.Items.Find(id);
+            return View(item);
+        }
         public ActionResult ShoppingCart()
         {
             return View();
@@ -202,7 +205,7 @@ namespace SweetShop.Controllers
             }
             else
             {
-                return Redirect("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&amount=" + total / 220 + "&business=JanjuaTailors@Shop.com&item_name=ToyLand&return=https://localhost:44300/Home/OrderConfirmed/" + ConfirmedOrderID);
+                return Redirect("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&amount=" + total / 220 + "&business=JanjuaTailors@Shop.com&item_name=ToyLand&return=https://localhost:44304/Home/OrderConfirmed/" + ConfirmedOrderID);
 
             }
 
@@ -225,7 +228,6 @@ namespace SweetShop.Controllers
 
             return View(order);
         }
-
         public ActionResult Login(string return_url)
         {
             ViewBag.return_url = return_url;
@@ -233,7 +235,7 @@ namespace SweetShop.Controllers
         }
         public ActionResult LoginVerify(string email, string password, string type, string return_url)
         {
-            if (return_url == null)
+            if (return_url == null || return_url == "")
             {
                 return_url = "/Home/";
             }
@@ -252,7 +254,7 @@ namespace SweetShop.Controllers
                 if (type == "Manager")
                 {
                     Session["LoggedInManager"] = check;
-                    return Redirect("/Home/Manager");
+                    return Redirect("/Mgr_Reports/PLSReport");
                 }
                 if (type == "Admin")
                 {
@@ -310,8 +312,6 @@ namespace SweetShop.Controllers
 
             return Redirect("/Home/Login");
         }
-
-
         public ActionResult Logout()
         {
             Session["LoggedInUser"] = null;
@@ -319,7 +319,6 @@ namespace SweetShop.Controllers
 
             return Redirect("/Home");
         }
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
